@@ -23,8 +23,6 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
 export EDITOR="$HOME/bin/mate -w"
 export VISUAL="$HOME/bin/mate -w"
 export PAGER='less'
