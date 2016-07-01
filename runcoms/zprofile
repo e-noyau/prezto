@@ -6,6 +6,12 @@
 #
 
 #
+# Increasing system limits
+#
+ulimit -n 65536
+ulimit -u 2048
+
+#
 # Browser
 #
 
@@ -19,7 +25,11 @@ fi
 
 export EDITOR='nano'
 export VISUAL='nano'
+export EDITOR="$HOME/bin/mate -w"
+export VISUAL="$HOME/bin/mate -w"
 export PAGER='less'
+
+export GIT_EDITOR="mate --name 'Git Commit Message' -w -l 1"
 
 #
 # Language
@@ -32,6 +42,14 @@ fi
 #
 # Paths
 #
+userpath=.:~/bin:~/bin/$ostype:~/Projects/depot_tools
+
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+else
+  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/g4bin:/usr/local/sbin:/usr/X11/bin
+fi
+export PATH=$userpath:$PATH
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -42,10 +60,10 @@ typeset -gU cdpath fpath mailpath path
 # )
 
 # Set the list of directories that Zsh searches for programs.
-path=(
-  /usr/local/{bin,sbin}
-  $path
-)
+# path=(
+#   /usr/local/{bin,sbin}
+#   $path
+# )
 
 #
 # Less
